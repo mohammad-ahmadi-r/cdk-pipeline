@@ -1,7 +1,7 @@
 from aws_cdk import (
     # Duration,
     Stack,
-    # aws_sqs as sqs,
+    aws_lambda as _lambda
 )
 import aws_cdk as cdk
 from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep
@@ -21,3 +21,11 @@ class CdkpipelineStack(cdk.Stack):
                         "cdk synth"]
                 )
             )
+
+        my_lambda = _lambda.Function(
+            self, "MyLambdaFunction",
+            code=_lambda.InlineCode("def lambda_handler(event, context):\n    return 'Hello, CDK!'"),
+            handler="index.lambda_handler",
+            runtime=_lambda.Runtime.PYTHON_3_8,
+        )
+
