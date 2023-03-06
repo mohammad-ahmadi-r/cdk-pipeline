@@ -2,11 +2,9 @@ from aws_cdk import (
     Stack,
 )
 import aws_cdk as cdk
-from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep
+from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep, ManualApprovalStep
 from constructs import Construct
-
-from wordpress_stack import WordpressStack
-from wordpress_test_stack import WordpressTestStack
+from . import stage
 
 class CdkpipelineStack(cdk.Stack):
 
@@ -23,7 +21,9 @@ class CdkpipelineStack(cdk.Stack):
                 )
             )
 
-        test_stage= pipeline.add_stage(WordpresTestStack(self, "test"))
+        test_stage= pipeline.add_stage(stage.PipelineStage(self,"test",
+            env=cdk.Environment(account="707597687992", region="eu-west-1")))
         test_stage.add_post(ManualApprovalStep('approval'))
 
-        prod_stage= pipeline.add_stage(WordpressStack(self, "prod"))
+        prod_stage= pipeline.add_stage(stage.PipelineStage(self,"prod",
+            env=cdk.Environment(account="707597687992", region="eu-west-1")))

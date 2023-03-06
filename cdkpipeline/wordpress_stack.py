@@ -15,7 +15,7 @@ from aws_cdk import (
 import aws_cdk as core
 from constructs import Construct
 import json
-from aws_cdk import cdk
+import aws_cdk as cdk
 
 class WordpressStack(cdk.Stack):
 
@@ -174,7 +174,7 @@ class WordpressStack(cdk.Stack):
         ## ECS service
         fargate_security_group = ec2.SecurityGroup(self, 'MyFargateSecurityGroup',
                                                    vpc=vpc,
-                                                   allow_all_outbound=True,
+                                                   allow_all_outbound=False,
                                                    security_group_name='my-fargate-sg')
         fargate_security_group.add_ingress_rule(ec2.Peer.any_ipv4(), ec2.Port.tcp(80), 'Allow inbound traffic to Fargate service')
 
