@@ -15,9 +15,8 @@ from aws_cdk import (
 import aws_cdk as core
 from constructs import Construct
 import json
-import aws_cdk as cdk
 
-class WordpressStack(cdk.Stack):
+class WordpressStack(core.Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
