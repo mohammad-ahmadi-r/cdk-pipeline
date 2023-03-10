@@ -12,11 +12,11 @@ from aws_cdk import (
     aws_datasync as datasync,
     aws_secretsmanager as sm
 )
-import aws_cdk as core
+import aws_cdk as cdk
 from constructs import Construct
 import json
 
-class WordpressStack(core.Stack):
+class WordpressStack(cdk.Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
