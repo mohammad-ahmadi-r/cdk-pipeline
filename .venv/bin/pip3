@@ -1,4 +1,4 @@
-#!/home/mamadamd/cdk-project/02_cdk-pipeline/v03_new-way/.venv/bin/python3
+#!/home/mamadamd/cdk-project/02_cdk-pipeline/v05_new-method/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
