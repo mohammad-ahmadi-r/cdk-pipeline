@@ -7,8 +7,8 @@ import aws_cdk as cdk
 from aws_cdk.pipelines import CodePipeline, CodePipelineSource, ShellStep
 from constructs import Construct
 
-#from stage import PipelineStage
-#from aws_cdk.pipelines import ManualApprovalStep
+from lambdastacks.pipeline_stage import PipelineStage
+from aws_cdk.pipelines import ManualApprovalStep
 
 
 class PipelineStack(cdk.Stack):
@@ -25,3 +25,8 @@ class PipelineStack(cdk.Stack):
                         "cdk synth"]
                 )
             )
+        
+        testing_stage= pipeline.add_stage(PipelineStage(self, 'test',
+            env=cdk.Environment(account="707597687992", region="eu-west-1")))
+
+        testing_stage.add_post(ManualApprovalStep('approval'))
