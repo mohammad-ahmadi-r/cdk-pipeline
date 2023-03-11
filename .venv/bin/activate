@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/mamadamd/cdk-project/02_cdk-pipeline/v05_new-method/.venv"
+VIRTUAL_ENV="/home/mamadamd/cdk-project/02_cdk-pipeline/v06_pipeine-v2/.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
