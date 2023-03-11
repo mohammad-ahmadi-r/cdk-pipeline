@@ -30,3 +30,7 @@ class PipelineStack(cdk.Stack):
             env=cdk.Environment(account="707597687992", region="eu-west-1")))
 
         testing_stage.add_post(ManualApprovalStep('approval'))
+
+        prod_stage= pipeline.add_stage(PipelineStage(self,"prod",
+            env=cdk.Environment(account="707597687992", region="eu-west-1")))
+ 
